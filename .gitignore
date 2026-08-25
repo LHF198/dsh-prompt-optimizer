@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# Build outputs (the package currently ships a hand-built bundle under lib/,
+# so these are defensive; add real build dirs here if the engineering step
+# introduces a compile step)
+dist/
+build/
+*.tsbuildinfo
+
+# Test / coverage
+coverage/
+.tmp/
+*.tap
+
+# Logs & OS cruft
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+Thumbs.db
+
+# Local env & secrets
+.env
+.env.*
+!.env.example
+
+# Editor
+.idea/
+.vscode/
+*.swp
