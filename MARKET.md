@@ -1,33 +1,51 @@
 # Market release notes — dsh-prompt-optimizer
 
-Everything below follows the DSH plugin market conventions (see the
-`dshmarket` checker: `check.ts`, `compatibility.ts`, `verify.ts`).
+This package is intended for **community release** to npm and the
+**awesome-dsh-plugin** registry. Everything below follows the DSH plugin market
+conventions (see the `dshmarket` checker: `check.ts`, `compatibility.ts`,
+`verify.ts`).
+
+> **Status marker**: the repository metadata still carries `YOUR_ORG`
+> placeholders (`package.json` repository / homepage / bugs, and the registry
+> entry below). This is a **blocking pre-publish item** — must be replaced with
+> the real owner before any release.
 
 ## Before publishing
 
-- [ ] Replace the `YOUR_ORG` placeholders in `package.json` with the real
-      repository/owner.
-- [ ] `pnpm build` and ship the built `lib/` — never publish a source-only
-      checkout that requires a build step (a missing `lib/` kills the whole
-      profile with `ERR_MODULE_NOT_FOUND`).
+- [ ] **Replace the `YOUR_ORG` placeholders** in `package.json` with the real
+      repository/owner (repository / homepage / bugs), and update the
+      `awesome-dsh-plugin` entry below to match.
+- [ ] Confirm the **build story matches the actual package**. Current state:
+      the bundle is hand-written (`lib/client.js`) and the host half is
+      hand-written ESM (`lib/index.js`); there is **no compile step** and no
+      `pnpm build` script yet. Once the maintainer adds `package.json.scripts`
+      (build / lint / test), reconcile this checklist and the README with the
+      **real script names** and ship the built `lib/` — never publish a
+      source-only checkout that requires a build step (a missing `lib/` kills
+      the whole profile with `ERR_MODULE_NOT_FOUND`).
 - [ ] Confirm `@deepseek-ai/*` stays out of `dependencies`
       (peerDependencies only) — shipping a hoisted core copy shadows the host
       (the dsh-excel-chat failure mode the market checker names).
 - [ ] Pick a unique loader entry `id`/`name` (`dsh-prompt-optimizer`) — a
-      duplicate id bricks the next boot.
+      duplicate id bricks the next boot (checker #98 duplicate-id boot failure).
 - [ ] Keep the peer range honest for the DSH versions you support; a too-low
-      minimum (`belowMin`) is a hard risk.
+      minimum (`belowMin`) is a hard risk. Current ranges: `@deepseek-ai/cordis
+      ^4.0.1`, `@deepseek-ai/dsh-llm ^0.1.1-rc.2`, `react ^18.3.1` (optional).
 - [ ] No install-time build scripts (pnpm >= 10 blocks them by default).
 - [ ] This is a Web-profile plugin (client `platform: web`) — do not install
       it into a CLI/terminal profile.
 - [ ] Release to npm (`registry-verified` protects the name), then list the
       package in the **awesome-dsh-plugin** registry — not by PRing the
       dshmarket repo itself.
+- [ ] Walk the project docs before release: [README.md](./README.md),
+      [CONTRIBUTING.md](./CONTRIBUTING.md), [CHANGELOG.md](./CHANGELOG.md) and
+      [docs/adr](./docs/adr/) — confirm the supported-version claim and the
+      choices recorded in the ADRs are still accurate.
 
 ## awesome-dsh-plugin registry entry
 
 Add an entry with the `RegistryPlugin` fields (name / owner / url / category /
-description / npm / stars / install / added). Example:
+description / npm / stars / install / added). Example (owner still placeholder):
 
 ```yaml
 - name: dsh-prompt-optimizer
@@ -61,12 +79,11 @@ a dynamic Cordis plugin in this DSH instance:
   in the normal document flow, so no frame-level overlay can intercept its
   buttons — this replaced the earlier modal, which was rendered below DSH's
   `shell.overlay` layer (e.g. the update-checker banner, z-index 9998) and had
-  unresponsive areas.
+  unresponsive areas. (See [ADR-0001](./docs/adr/0001-use-input-dock-instead-of-overlay-modal.md).)
 - Adopt writes the draft back via `inputActions.setDraft`; editing during the
   request disables adopt and shows the changed-draft warning.
 - Known environment limits: the dynamic client runner does not commit
   root-scope `shell.overlay` entries (component renders but the element is
   never inserted), which is why the comparison uses the session-scope dock;
   the slash source must be wrapped in `ctx.effect` or re-registration fails
-  with "already registered".
-
+  with "already registered" (see [ADR-0002](./docs/adr/0002-wrap-slash-source-in-ctx-effect.md)).

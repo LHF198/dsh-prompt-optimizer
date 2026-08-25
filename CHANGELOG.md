@@ -1,0 +1,56 @@
+# Changelog
+
+All notable changes to dsh-prompt-optimizer are recorded here.
+Format follows [Keep a Changelog](https://keepachangelog.com/); this project
+adheres to [Semantic Versioning](https://semver.org/). See the
+[releases page][releases] for tagged versions.
+
+## [Unreleased]
+
+### Engineering / docs (in progress)
+
+- Added contribution guidelines ([CONTRIBUTING.md](./CONTRIBUTING.md)) and an
+  architecture-decision log ([docs/adr](./docs/adr/)).
+- Reconcile package scripts (build / lint / test) once the maintainer lands them;
+  update the README and MARKET build notes to the real script names.
+
+## [0.1.0] - 2026-08-25
+
+Initial release of the prompt-optimizer market package.
+
+### Added
+
+- **Host half** (`lib/index.js`): a loopback-only HTTP route
+  (`/api/prompt-optimizer/optimize`) that runs the optimization through DSH's
+  official `llm` service using the session's current default model
+  (`agentDefaultModel`); no storage, no session writes, no third-party calls.
+- **Client half** (`lib/client.js`): a `window.__ModuleLoader__` browser bundle
+  with three official entry points that share one module-level state machine —
+  - a 优化 / Optimize button in the composer tool row
+    (`conversation.input.left`);
+  - a 优化 action in the session header
+    (`conversation.session.header.actions`);
+  - an `/optimize` slash command (`inputTriggers`, when available).
+- **Confirm-before-apply comparison bar** in `conversation.input.dock` showing
+  原始输入 / 优化结果 side by side, with 采用优化结果 / 放弃, and a stacking
+  layout on narrow windows (see [ADR-0001](./docs/adr/0001-use-input-dock-instead-of-overlay-modal.md)).
+- **Cancellable requests** — an in-flight request shows a spinner + 取消, and
+  cancelling discards a late result via a request-sequence guard.
+- **Changed-draft guard** — editing while the request is in flight disables
+  adopt and warns, so a late result never clobbers new content.
+- **Localized & accessible UI** — zh / en locale strings through the DSH locale
+  service, aria-labels, keyboard-operable buttons.
+- **Safe degradation** — missing model, model error, empty result and request
+  failure surface a friendly message and never lose the draft.
+- **Market package files** — `cordis.patch.yml` patch layer,
+  `dsh.bundle`/`dsh.client` manifest, `README.md`, `MARKET.md`,
+  Apache-2.0 `LICENSE`, `.gitignore`.
+
+[Unreleased]: https://github.com/YOUR_ORG/dsh-prompt-optimizer/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/YOUR_ORG/dsh-prompt-optimizer/releases/tag/v0.1.0
+[releases]: https://github.com/YOUR_ORG/dsh-prompt-optimizer/releases
+
+<!--
+NOTE: the `YOUR_ORG` placeholders in the links above must be replaced with the
+real owner before the first public release (see MARKET.md).
+-->
