@@ -50,6 +50,11 @@
     "prompt-optimizer",
     "ui"
   ],
+  "scripts": {
+    "lint": "node --check lib/index.js && node --check lib/client.js",
+    "build": "node --check lib/index.js && node --check lib/client.js && node -e \"if(!require('fs').existsSync('lib/client.js'))process.exit(1)\"",
+    "test": "node test/verify.js"
+  },
   "license": "Apache-2.0",
   "peerDependencies": {
     "@deepseek-ai/cordis": "^4.0.1",
