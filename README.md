@@ -38,9 +38,12 @@ with the session's currently selected model, then shows an
 
 ## Install
 
-From the DSH market (once listed) or from a Git URL:
+From the DSH market (once listed), npm, or a Git URL:
 
 ```bash
+# npm / pnpm
+npm install @joe0001/dsh-prompt-optimizer
+# or from source
 git clone https://github.com/LHF198/dsh-prompt-optimizer.git
 cd dsh-prompt-optimizer
 ```

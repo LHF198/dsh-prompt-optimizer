@@ -54,9 +54,9 @@ description / npm / stars / install / added). Example (owner still placeholder):
     Improve the current chat draft before sending with the session's model and
     a confirm-before-apply original/result comparison. Loopback-only, no
     storage, no third-party calls.
-  npm: dsh-prompt-optimizer
+  npm: @joe0001/dsh-prompt-optimizer
   stars: 0
-  install: dsh-prompt-optimizer
+  install: @joe0001/dsh-prompt-optimizer
   added: "2026-01-01"
 ```
 
