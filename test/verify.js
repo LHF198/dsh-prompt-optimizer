@@ -77,7 +77,7 @@ const ALIAS_WHITELIST = new Set([
   "dsw-alias-toast-bg", "dsw-alias-tooltip-bg",
 ]);
 
-const SLOT_SEATS = ["conversation.input.left", "conversation.input.dock", "conversation.session.header.actions"];
+const SLOT_SEATS = ["conversation.input.right", "conversation.input.dock", "conversation.session.header.actions"];
 
 const failures = [];
 const passes = [];

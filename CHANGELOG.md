@@ -27,6 +27,10 @@ adheres to [Semantic Versioning](https://semver.org/). See the
   **language** (auto / zh / en), **undo** after adopt, and **retry** on
   error; the host composes the system prompt from the selection
   (`buildSystem`).
+- UI: the optimize control is now an **icon-only ✨ button** next to the model
+  selector (`conversation.input.right`), with compact style/language selects,
+  an undo icon after adopt, and a retry icon on error; the header action is
+  icon-only too (market-aligned, see `docs/market-analysis.md`).
 
 ## [0.1.0] - 2026-08-25
 
