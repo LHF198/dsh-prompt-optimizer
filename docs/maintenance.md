@@ -16,8 +16,9 @@ Living list of agreed work, updated after each release. Items are prioritized
 
 - [x] **AbortController enhancement** (`lib/abort.js`, host `opts.signal`,
       client inline abort; unit + verify `abort:` group). — done in 0.1.0 style.
-- [ ] **Competitor-informed feature P0** (see `docs/market-analysis.md`):
-      style selection / language / undo-after-adopt / retry-on-error.
+- [x] **Competitor-informed feature P0** (see `docs/market-analysis.md`):
+      style selection / language / undo-after-adopt / retry-on-error. — done
+      (host `buildSystem`, client selects + undo + retry; verify `features:` group).
 - [ ] **Multi-version compatibility pass**: run against 2–3 supported DSH
       versions; lock the contract (Slot/route/timer) with the `verify` suite.
 - [ ] **Deep theme + responsive verification**: force dark theme, test narrow

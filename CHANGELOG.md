@@ -22,6 +22,11 @@ adheres to [Semantic Versioning](https://semver.org/). See the
   `docs/maintenance.md`); recorded the change decision as ADR-0005.
 - Added `SECURITY.md` (privacy & loopback-only notes) and submitted the
   package to the awesome-dsh-plugin registry (PR #3358, pending merge).
+- Added competitor-informed features (see `docs/market-analysis.md`):
+  output **style** (general / professional / concise / coding), output
+  **language** (auto / zh / en), **undo** after adopt, and **retry** on
+  error; the host composes the system prompt from the selection
+  (`buildSystem`).
 
 ## [0.1.0] - 2026-08-25
 

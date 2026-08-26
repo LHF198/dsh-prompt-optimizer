@@ -290,6 +290,25 @@ function verifyAbort() {
   }
 }
 
+// Competitor-informed feature checks (style / language / undo / retry / host buildSystem).
+function verifyFeatures() {
+  const indexSrc = readFileSync(indexPath, "utf8");
+  const clientSrc = readFileSync(clientPath, "utf8");
+
+  const hostOk = /function buildSystem\b/.test(indexSrc) &&
+    /STYLE_HINTS\s*=/.test(indexSrc) && /LANG_HINTS\s*=/.test(indexSrc) &&
+    /system:\s*buildSystem\(style,\s*language\)/.test(indexSrc);
+  if (hostOk) ok("features:host-style-language");
+  else fail("features:host-style-language", "lib/index.js must define buildSystem (STYLE_HINTS/LANG_HINTS) and use it for opts.system");
+
+  const clientOk = /style:\s*"general"/.test(clientSrc) && /language:\s*"auto"/.test(clientSrc) &&
+    /style:\s*state\.style,\s*language:\s*state\.language/.test(clientSrc) &&
+    /function undo\b/.test(clientSrc) && /lastAdopt/.test(clientSrc) &&
+    /onClick:\s*start/.test(clientSrc);
+  if (clientOk) ok("features:client-style-lang-undo-retry");
+  else fail("features:client-style-lang-undo-retry", "lib/client.js must carry style/language selects, send them in the request, add undo (lastAdopt) and a retry affordance");
+}
+
 // ---------------------------------------------------------------------------
 try {
   verifyPackage();
@@ -301,6 +320,7 @@ try { verifyCssVars(); } catch (e) { fail("css", e.message); }
 try { verifyStateMachine(); } catch (e) { fail("state-machine", e.message); }
 try { verifyHardened(); } catch (e) { fail("hardened-extras", e.message); }
 try { verifyAbort(); } catch (e) { fail("abort", e.message); }
+try { verifyFeatures(); } catch (e) { fail("features", e.message); }
 
 // ---------------------------------------------------------------------------
 for (const p of passes) console.log(`  \u2713 ${p}`);
