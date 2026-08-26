@@ -20,6 +20,8 @@ adheres to [Semantic Versioning](https://semver.org/). See the
   `test/verify.js`; `npm run test` now runs verify (21 checks) + abort (8).
 - Added release SOP and maintenance backlog (`docs/release.md`,
   `docs/maintenance.md`); recorded the change decision as ADR-0005.
+- Added `SECURITY.md` (privacy & loopback-only notes) and submitted the
+  package to the awesome-dsh-plugin registry (PR #3358, pending merge).
 
 ## [0.1.0] - 2026-08-25
 
