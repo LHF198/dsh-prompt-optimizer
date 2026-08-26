@@ -5,10 +5,10 @@ This package is intended for **community release** to npm and the
 conventions (see the `dshmarket` checker: `check.ts`, `compatibility.ts`,
 `verify.ts`).
 
-> **Status marker**: the repository metadata now points at the `LHF198` owner
-> (`package.json` repository / homepage / bugs, and the registry entry below).
-> **Remaining pre-publish item**: create the remote repo, push, tag the first
-> release, then publish (see `docs/release.md`).
+> **Status**: released — `@joe0001/dsh-prompt-optimizer@0.1.0` is published to
+> npm (public), with repository metadata at the `LHF198` owner. The
+> **awesome-dsh-plugin** entry below is ready to submit as a PR (pending that
+> registry's owner).
 
 ## Before publishing
 
