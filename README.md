@@ -57,10 +57,10 @@ plugins:
 After enabling, reload the Web GUI. A 优化 / Optimize action appears at the left
 end of the composer tool row, in the session header, and as `/optimize`.
 
-> ⚠️ **工程化说明（待维护者补齐）**：当前包为**手写 bundle、无编译步骤**——缺省
-> 情况下克隆即用，开发校验用下面的 `node --check`，**无需 `pnpm build`**。
-> 工程化阶段将由维护者在 `package.json` 补充 build / lint / test 脚本；脚本落地后，
-> 请以**实际脚本名**更新本节的构建与校验命令，并同步 `MARKET.md` 的发布前检查。
+> **工程化说明**：当前包为**手写 bundle、无编译步骤**——缺省情况下克隆即用，本地校验
+> 用 package 的三个脚本：`npm run lint`（对 `lib/index.js` 与 `lib/client.js` 做
+> `node --check`）、`npm run build`（lint 后确认 `lib/client.js` 存在，并非真正的转译/打包）、
+> `npm run test`（运行 `node test/verify.js`）。pnpm 下等价为 `pnpm run <script>`。
 > （本项目面向 npm 发布前，仓库 URL 中的 `YOUR_ORG` 为占位符，需替换为真实 owner。）
 
 ## Usage
@@ -99,12 +99,16 @@ You can also press `/optimize` in the composer, or use the header action.
 ## Development
 
 The package ships a hand-built bundle (`lib/client.js`) and a hand-written host
-entry (`lib/index.js`); there is no compile step, so cloning and enabling is all
-that is needed to try it.
+entry (`lib/index.js`); there is **no compile step** — the `build` script does not
+transpile, it only validates that both halves are syntactically valid and that
+the client bundle exists. Cloning and enabling is all that is needed to try it.
+
+Validate and verify with the package scripts (run with npm or pnpm):
 
 ```bash
-node --check lib/index.js   # syntax sanity for the host half
-node --check lib/client.js  # syntax sanity for the client bundle
+npm run lint    # node --check lib/index.js && node --check lib/client.js
+npm run build   # lint + confirm lib/client.js exists
+npm run test    # node test/verify.js
 ```
 
 Keep the client bundle free of JSX/TypeScript/`import` and always register UI

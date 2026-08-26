@@ -15,14 +15,13 @@ conventions (see the `dshmarket` checker: `check.ts`, `compatibility.ts`,
 - [ ] **Replace the `YOUR_ORG` placeholders** in `package.json` with the real
       repository/owner (repository / homepage / bugs), and update the
       `awesome-dsh-plugin` entry below to match.
-- [ ] Confirm the **build story matches the actual package**. Current state:
-      the bundle is hand-written (`lib/client.js`) and the host half is
-      hand-written ESM (`lib/index.js`); there is **no compile step** and no
-      `pnpm build` script yet. Once the maintainer adds `package.json.scripts`
-      (build / lint / test), reconcile this checklist and the README with the
-      **real script names** and ship the built `lib/` — never publish a
-      source-only checkout that requires a build step (a missing `lib/` kills
-      the whole profile with `ERR_MODULE_NOT_FOUND`).
+- [ ] Confirm the **build story matches the actual package**. This is a
+      hand-written bundle — there is **no compile/transpile step**. The package
+      ships three scripts (run with `npm run <script>` or `pnpm run <script>`):
+      `lint` = `node --check` on both halves, `build` = lint + confirm
+      `lib/client.js` exists, `test` = `node test/verify.js`. Always ship the
+      built `lib/` — never a source-only checkout that requires a build step
+      (a missing `lib/` kills the whole profile with `ERR_MODULE_NOT_FOUND`).
 - [ ] Confirm `@deepseek-ai/*` stays out of `dependencies`
       (peerDependencies only) — shipping a hoisted core copy shadows the host
       (the dsh-excel-chat failure mode the market checker names).
