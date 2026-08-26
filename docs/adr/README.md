@@ -20,6 +20,7 @@ The project uses a lightweight ADR format (inspired by
 | [0002](./0002-wrap-slash-source-in-ctx-effect.md) | Wrap the `/optimize` slash source in `ctx.effect` |
 | [0003](./0003-shared-state-with-tick-render.md) | Shared module-level state with a React tick re-render |
 | [0004](./0004-community-release-via-npm-and-awesome-dsh-plugin.md) | Community release via npm + the awesome-dsh-plugin registry |
+| [0005](./0005-abort-controller-enhancement.md) | AbortController enhancement for request control |
 
 ## How to add an ADR
 

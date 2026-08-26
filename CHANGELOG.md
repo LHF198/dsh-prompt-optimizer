@@ -7,12 +7,19 @@ adheres to [Semantic Versioning](https://semver.org/). See the
 
 ## [Unreleased]
 
-### Engineering / docs (in progress)
+### Engineering / hardening
 
-- Added contribution guidelines ([CONTRIBUTING.md](./CONTRIBUTING.md)) and an
-  architecture-decision log ([docs/adr](./docs/adr/)).
-- Reconcile package scripts (build / lint / test) once the maintainer lands them;
-  update the README and MARKET build notes to the real script names.
+- Hardened the client: functional-tick re-render (avoids `setState` bail-out),
+  90s request timeout with per-session reset and generation guard, an error
+  boundary per seat, and `--dsw-alias-*` theme tokens.
+- Added AbortController enhancement (`lib/abort.js`): `TimedAbortController`
+  and `createTimedController` for timeout / cancel / composed signals; the host
+  passes `opts.signal` to `llm.stream`, and the client inlines a real
+  `AbortController` so cancel/timeout aborts the in-flight fetch.
+- Added `test/abort.test.js` (fake timers) and an `abort:` group in
+  `test/verify.js`; `npm run test` now runs verify (21 checks) + abort (8).
+- Added release SOP and maintenance backlog (`docs/release.md`,
+  `docs/maintenance.md`); recorded the change decision as ADR-0005.
 
 ## [0.1.0] - 2026-08-25
 

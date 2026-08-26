@@ -254,6 +254,42 @@ function verifyHardened() {
   }
 }
 
+// AbortController enhancement checks.
+function verifyAbort() {
+  const abortPath = path.join(LIB, "abort.js");
+  const abortTestPath = path.join(ROOT, "test", "abort.test.js");
+  const indexSrc = readFileSync(indexPath, "utf8");
+  const clientSrc = readFileSync(clientPath, "utf8");
+
+  // 1) Module present + parses.
+  if (!existsSync(abortPath)) return fail("abort:module", "lib/abort.js not found");
+  try { execFileSync("node", ["--check", abortPath], { stdio: "pipe" }); ok("abort:module exists"); }
+  catch (e) { return fail("abort:module", "lib/abort.js failed node --check: " + e.message); }
+
+  // 2) Host integrates the controller: imports it, wires opts.signal, and uses maxTokens 4096.
+  if (/from ['"]\.\/abort\.js['"]/.test(indexSrc) && /opts\.signal\s*=/.test(indexSrc) && /maxTokens:\s*4096/.test(indexSrc)) {
+    ok("abort:host-signal");
+  } else {
+    fail("abort:host-signal",
+      "lib/index.js must import lib/abort.js, set opts.signal (llm.stream), and use maxTokens: 4096");
+  }
+
+  // 3) Client inline abort: real AbortController + reqOpts.signal + abortCtrl cleanup.
+  if (/new AbortController\b/.test(clientSrc) && /reqOpts\.signal\s*=/.test(clientSrc) && /function abortCtrl\b/.test(clientSrc)) {
+    ok("abort:client-inline");
+  } else {
+    fail("abort:client-inline", "lib/client.js must inline AbortController, wire reqOpts.signal, and define abortCtrl()");
+  }
+
+  // 4) Unit tests pass (fake timers).
+  try {
+    execFileSync("node", ["--test", abortTestPath], { stdio: "pipe" });
+    ok("abort:tests");
+  } catch (e) {
+    fail("abort:tests", "abort unit tests failed: " + (e.stdout || e.message));
+  }
+}
+
 // ---------------------------------------------------------------------------
 try {
   verifyPackage();
@@ -264,6 +300,7 @@ try { verifySlots(); } catch (e) { fail("slots", e.message); }
 try { verifyCssVars(); } catch (e) { fail("css", e.message); }
 try { verifyStateMachine(); } catch (e) { fail("state-machine", e.message); }
 try { verifyHardened(); } catch (e) { fail("hardened-extras", e.message); }
+try { verifyAbort(); } catch (e) { fail("abort", e.message); }
 
 // ---------------------------------------------------------------------------
 for (const p of passes) console.log(`  \u2713 ${p}`);
