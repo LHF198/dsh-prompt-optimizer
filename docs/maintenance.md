@@ -5,8 +5,9 @@ Living list of agreed work, updated after each release. Items are prioritized
 
 ## P0 · Release-blocking
 
-- [ ] **Replace `YOUR_ORG`** with the real GitHub owner (`package.json`,
-      `MARKET.md`, `CHANGELOG.md`) and add the remote repo.
+- [x] **Replace `YOUR_ORG`** — now `LHF198` (`package.json`, `MARKET.md`,
+      `CHANGELOG.md`). **Remaining**: create the remote repo under `LHF198`,
+      push, tag `v0.1.0`.
 - [ ] **Publish** `npm publish` + awesome-dsh-plugin PR (needs npm credentials).
 - [ ] **Declare a supported DSH version matrix** in README and validate each.
 

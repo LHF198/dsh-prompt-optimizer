@@ -20,8 +20,9 @@ require you to supply the real GitHub `owner`/repo and npm credentials.
 
 ## Release steps
 
-1. **[needs-owner]** `YOUR_ORG` → real owner in `package.json`
-   (`repository`/`homepage`/`bugs`) + `MARKET.md` + `CHANGELOG.md`.
+1. **Owner metadata** — already points at `LHF198` (package.json
+   `repository`/`homepage`/`bugs` + `MARKET.md` + `CHANGELOG.md`). Confirm the
+   remote repo exists under `LHF198` before publishing.
 2. **Version + tag** — set `version` (semver), ensure `CHANGELOG` entry, then
    `git tag vX.Y.Z && git push origin vX.Y.Z`.
 3. **Dry run** — `npm pack --dry-run` (verify `files` list) then

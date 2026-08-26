@@ -53,11 +53,11 @@ Initial release of the prompt-optimizer market package.
   `dsh.bundle`/`dsh.client` manifest, `README.md`, `MARKET.md`,
   Apache-2.0 `LICENSE`, `.gitignore`.
 
-[Unreleased]: https://github.com/YOUR_ORG/dsh-prompt-optimizer/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/YOUR_ORG/dsh-prompt-optimizer/releases/tag/v0.1.0
-[releases]: https://github.com/YOUR_ORG/dsh-prompt-optimizer/releases
+[Unreleased]: https://github.com/LHF198/dsh-prompt-optimizer/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/LHF198/dsh-prompt-optimizer/releases/tag/v0.1.0
+[releases]: https://github.com/LHF198/dsh-prompt-optimizer/releases
 
 <!--
-NOTE: the `YOUR_ORG` placeholders in the links above must be replaced with the
-real owner before the first public release (see MARKET.md).
+The links above point at the `LHF198` owner; create the remote repo and tag the
+first release before publishing (see docs/release.md).
 -->

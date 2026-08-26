@@ -5,11 +5,11 @@
   "author": "",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/YOUR_ORG/dsh-prompt-optimizer.git"
+    "url": "git+https://github.com/LHF198/dsh-prompt-optimizer.git"
   },
-  "homepage": "https://github.com/YOUR_ORG/dsh-prompt-optimizer",
+  "homepage": "https://github.com/LHF198/dsh-prompt-optimizer",
   "bugs": {
-    "url": "https://github.com/YOUR_ORG/dsh-prompt-optimizer/issues"
+    "url": "https://github.com/LHF198/dsh-prompt-optimizer/issues"
   },
   "type": "module",
   "main": "lib/index.js",

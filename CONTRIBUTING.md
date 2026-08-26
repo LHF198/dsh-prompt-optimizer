@@ -18,7 +18,7 @@ end that applies to every pull request.
   composer/header/slash entry points appear. There is no `pnpm build`.
 
 ```bash
-git clone https://github.com/YOUR_ORG/dsh-prompt-optimizer.git
+git clone https://github.com/LHF198/dsh-prompt-optimizer.git
 cd dsh-prompt-optimizer
 node --check lib/index.js    # host half syntax sanity
 node --check lib/client.js   # client bundle syntax sanity

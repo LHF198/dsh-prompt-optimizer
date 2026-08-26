@@ -34,9 +34,8 @@ Release to the community via **npm + the awesome-dsh-plugin registry**, while:
 - publishing the hand-built `lib/` (never a source-only checkout that requires a
   build step, which causes `ERR_MODULE_NOT_FOUND`);
 - keeping peer ranges aligned with the supported DSH versions;
-- replacing the `YOUR_ORG` placeholders (repository / homepage / bugs and the
-  registry entry) with the real owner **before** the first release — this is a
-  blocking pre-publish item;
+- pointing the repository metadata (repository / homepage / bugs and the
+  registry entry) at the `LHF198` owner **before** the first release;
 - maintaining a `CHANGELOG.md` and using SemVer (current version `0.1.0`).
 
 ## Consequences

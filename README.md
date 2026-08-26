@@ -41,7 +41,7 @@ with the session's currently selected model, then shows an
 From the DSH market (once listed) or from a Git URL:
 
 ```bash
-git clone https://github.com/YOUR_ORG/dsh-prompt-optimizer.git
+git clone https://github.com/LHF198/dsh-prompt-optimizer.git
 cd dsh-prompt-optimizer
 ```
 
@@ -61,7 +61,7 @@ end of the composer tool row, in the session header, and as `/optimize`.
 > 用 package 的三个脚本：`npm run lint`（对 `lib/index.js` 与 `lib/client.js` 做
 > `node --check`）、`npm run build`（lint 后确认 `lib/client.js` 存在，并非真正的转译/打包）、
 > `npm run test`（运行 `node test/verify.js`）。pnpm 下等价为 `pnpm run <script>`。
-> （本项目面向 npm 发布前，仓库 URL 中的 `YOUR_ORG` 为占位符，需替换为真实 owner。）
+> （当前仓库 URL 已指向 `LHF198`；创建远程仓库并推送后，即可按 `docs/release.md` 发布。）
 
 ## Usage
 

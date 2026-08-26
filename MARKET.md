@@ -5,16 +5,15 @@ This package is intended for **community release** to npm and the
 conventions (see the `dshmarket` checker: `check.ts`, `compatibility.ts`,
 `verify.ts`).
 
-> **Status marker**: the repository metadata still carries `YOUR_ORG`
-> placeholders (`package.json` repository / homepage / bugs, and the registry
-> entry below). This is a **blocking pre-publish item** — must be replaced with
-> the real owner before any release.
+> **Status marker**: the repository metadata now points at the `LHF198` owner
+> (`package.json` repository / homepage / bugs, and the registry entry below).
+> **Remaining pre-publish item**: create the remote repo, push, tag the first
+> release, then publish (see `docs/release.md`).
 
 ## Before publishing
 
-- [ ] **Replace the `YOUR_ORG` placeholders** in `package.json` with the real
-      repository/owner (repository / homepage / bugs), and update the
-      `awesome-dsh-plugin` entry below to match.
+- [x] **Repository metadata points at** `LHF198` (repository / homepage / bugs,
+      and the `awesome-dsh-plugin` entry below match).
 - [ ] Confirm the **build story matches the actual package**. This is a
       hand-written bundle — there is **no compile/transpile step**. The package
       ships three scripts (run with `npm run <script>` or `pnpm run <script>`):
@@ -48,8 +47,8 @@ description / npm / stars / install / added). Example (owner still placeholder):
 
 ```yaml
 - name: dsh-prompt-optimizer
-  owner: YOUR_ORG
-  url: https://github.com/YOUR_ORG/dsh-prompt-optimizer
+  owner: LHF198
+  url: https://github.com/LHF198/dsh-prompt-optimizer
   category: chat
   description: >-
     Improve the current chat draft before sending with the session's model and
