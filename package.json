@@ -1,6 +1,6 @@
 {
   "name": "@joe0001/dsh-prompt-optimizer",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Improve the current chat draft before sending: one click optimizes the draft with the session's current model and shows an original-vs-result comparison before you decide to adopt. 一键用当前模型优化聊天输入，采用前先对比原文与优化结果。",
   "author": "",
   "repository": {

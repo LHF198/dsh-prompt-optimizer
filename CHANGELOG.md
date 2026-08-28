@@ -7,6 +7,8 @@ adheres to [Semantic Versioning](https://semver.org/). See the
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-08-26
+
 ### Engineering / hardening
 
 - Hardened the client: functional-tick re-render (avoids `setState` bail-out),
