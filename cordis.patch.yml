@@ -1,6 +1,12 @@
 # Bundle patch layer: the row loads the package's main entry as the host half
 # (a plain Cordis plugin); the `dsh.client` declaration makes the web app load
 # its ./client bundle as the browser half.
+#
+# `name` must be the Node-resolvable package name, exactly as declared in
+# package.json `name` (scoped packages keep their `@scope/` prefix). It is both
+# the matching key and the anti-squat protection — the profile layer cannot
+# override it, so a missing prefix is unfixable downstream and must be fixed
+# here, in the package itself.
 - insert:
     - id: dsh-prompt-optimizer
-      name: dsh-prompt-optimizer
+      name: '@joe0001/dsh-prompt-optimizer'

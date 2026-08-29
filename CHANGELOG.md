@@ -7,6 +7,16 @@ adheres to [Semantic Versioning](https://semver.org/). See the
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-08-29
+
+### Fixed
+
+- Bundle patch row `name` now carries the `@joe0001/` scope prefix, matching
+  package.json `name`. The patch layer treats `name` as both matching key and
+  anti-squat protection, so the unscoped `dsh-prompt-optimizer` made the row
+  unresolvable after any clean reinstall (the loader cannot fix it from the
+  profile layer). This fixes installs from npm / the market for everyone.
+
 ## [0.2.0] - 2026-08-26
 
 ### Engineering / hardening
