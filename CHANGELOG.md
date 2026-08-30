@@ -7,6 +7,18 @@ adheres to [Semantic Versioning](https://semver.org/). See the
 
 ## [Unreleased]
 
+## [0.2.2] - 2026-08-29
+
+### Fixed
+
+- Client bundle now registers under the fully-qualified package name
+  `@joe0001/dsh-prompt-optimizer` (`window.__ModuleLoader__.load` id and the
+  module export name). After the package was renamed from the unscoped
+  `dsh-prompt-optimizer`, the client side kept the old unscoped id while the
+  loader requires the full package name — this surfaced as
+  `loaded without registering ... via ModuleLoader.load` on clean installs.
+  README loader example updated to match.
+
 ## [0.2.1] - 2026-08-29
 
 ### Fixed

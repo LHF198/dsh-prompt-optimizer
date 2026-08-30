@@ -53,7 +53,7 @@ Then add the loader row (or use the market's install flow):
 ```yaml
 plugins:
   - id: dsh-prompt-optimizer
-    name: dsh-prompt-optimizer
+    name: '@joe0001/dsh-prompt-optimizer'
     config: {}
 ```
 
